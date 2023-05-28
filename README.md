@@ -86,15 +86,11 @@ The networks are trained simultaneously, with the Critic network learning the Q-
 The model was trained over 107 episodes, with the average and current scores for each episode reported. The training results showed a consistent improvement of the agent's performance over time, as reflected by the increasing average score across the episodes.
   
 Here is a snapshot of the training results:  
-`  
-Episode 1	Average Score: 0.71 	Current Score: 0.71  
-...  
-Episode 50	Average Score: 20.33 	Current Score: 39.34  
-...  
-Episode 100	Average Score: 29.19 	Current Score: 38.04  
-...  
-Episode 107	Average Score: 31.81 	Current Score: 38.27  
-`  
+`Episode 1 Average Score: 0.71 Current Score: 0.71`   
+`Episode 50	Average Score: 20.33 Current Score: 39.34`    
+`Episode 100 Average Score: 29.19 Current Score: 38.04`  
+`Episode 107 Average Score: 31.81 Current Score: 38.27`    
+
 By the 107th episode, the model achieved an average score of 31.81 over the last 100 episodes, which is considered a benchmark score for many continuous control tasks.  
 
 ### Conclusion
