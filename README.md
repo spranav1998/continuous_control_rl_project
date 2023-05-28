@@ -64,25 +64,40 @@ The environment is considered solved, when the average (over 100 episodes) of th
 
 ### Instructions
 
-Follow the instructions in `Continuous_Control.ipynb` to get started with training your own agent!  
+Follow the instructions in `Continuous_Control2.ipynb` to get started with training your own agent!  
 
-### (Optional) Challenge: Crawler Environment
+## Report
+### Introduction
+In this project, we tackled the continuous control problem using a reinforcement learning approach. The aim was to train an agent to perform a task and reach a high average score.  
+  
+### Methodology  
+We used the Deep Deterministic Policy Gradient (DDPG) algorithm, which is an actor-critic, model-free algorithm based on the deterministic policy gradient that can operate over continuous action spaces. It was implemented in Python, using the PyTorch library for deep learning models.  
+  
+### The Model  
+The model architecture we used for this project is the Deep Deterministic Policy Gradient (DDPG), an Actor-Critic model. It consists of two main components: the Actor and the Critic. Both of these components have been implemented as neural networks using PyTorch.   
+  
+Actor: The actor directly optimizes the policy function to produce the best action given a state. Our implementation of the actor is a neural network model composed of two hidden layers, a batch normalization layer, and an output layer. The hidden layers have 400 and 300 nodes, respectively. They take the current state as an input and output the action values, which are then passed through a tanh activation function to ensure the output values are within the valid action range. The weights of the neural network layers are initialized with a uniform distribution to enhance the stability of learning.
+  
+Critic: The critic calculates the Q-value of the current policy (provided by the Actor). The critic is also a neural network with two hidden layers, a batch normalization layer, and an output layer. The hidden layers have 400 and 300 nodes, respectively. They take the current state and action as input, where the state is passed through the first hidden layer and the action is concatenated before passing through the second hidden layer. The output is a single Q-value indicating the expected return. Similar to the Actor, the Critic's weights are also initialized with a uniform distribution to ensure the stability of learning.
+  
+The networks are trained simultaneously, with the Critic network learning the Q-value of the current policy and the Actor network aiming to maximize these expected returns.
+  
+### Results
+The model was trained over 107 episodes, with the average and current scores for each episode reported. The training results showed a consistent improvement of the agent's performance over time, as reflected by the increasing average score across the episodes.
+  
+Here is a snapshot of the training results:
+`
+Episode 1	Average Score: 0.71 	Current Score: 0.71
+...
+Episode 50	Average Score: 20.33 	Current Score: 39.34
+...
+Episode 100	Average Score: 29.19 	Current Score: 38.04
+...
+Episode 107	Average Score: 31.81 	Current Score: 38.27
+`
+By the 107th episode, the model achieved an average score of 31.81 over the last 100 episodes, which is considered a benchmark score for many continuous control tasks.  
 
-After you have successfully completed the project, you might like to solve the more difficult **Crawler** environment.
+### Conclusion
+The DDPG agent performed exceptionally well in this task, reaching an average score of 31.81 by the 107th episode. These results suggest that our model is capable of learning to perform complex continuous control tasks effectively.
 
-![Crawler][image2]
-
-In this continuous control environment, the goal is to teach a creature with four legs to walk forward without falling.  
-
-You can read more about this environment in the ML-Agents GitHub [here](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md#crawler).  To solve this harder task, you'll need to download a new Unity environment.  (**Note**: Udacity students should not submit a project with this new environment.)
-
-You need only select the environment that matches your operating system:
-- Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Crawler/Crawler_Linux.zip)
-- Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Crawler/Crawler.app.zip)
-- Windows (32-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Crawler/Crawler_Windows_x86.zip)
-- Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Crawler/Crawler_Windows_x86_64.zip)
-
-Then, place the file in the `p2_continuous-control/` folder in the DRLND GitHub repository, and unzip (or decompress) the file.  Next, open `Crawler.ipynb` and follow the instructions to learn how to use the Python API to control the agent.
-
-(_For AWS_) If you'd like to train the agent on AWS (and have not [enabled a virtual screen](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md)), then please use [this link](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Crawler/Crawler_Linux_NoVis.zip) to obtain the "headless" version of the environment.  You will **not** be able to watch the agent without enabling a virtual screen, but you will be able to train the agent.  (_To watch the agent, you should follow the instructions to [enable a virtual screen](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md), and then download the environment for the **Linux** operating system above._)
-
+This project highlights the power and potential of reinforcement learning for solving complex control tasks that have continuous state and action spaces.
